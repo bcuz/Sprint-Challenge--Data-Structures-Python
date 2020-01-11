@@ -9,12 +9,24 @@ class RingBuffer:
         self.size = 0
 
     def append(self, item):
+
+        # if full, make head the new item coming in
+
+        # this needs more work
+        # need some .next stuff.
+
+
+        if self.size == self.capacity:
+            # first time around, head is oldest.
+            # next time around it'll be dll.head.next
+            self.storage.remove_from_head()
+            self.storage.add_to_head(item)
+
+        else:
         # adding when under limit
-        self.storage.add_to_tail(item)
-        self.size += 1
-
-
-        # if full, head becomes the newest item.
+            self.storage.add_to_tail(item)
+            self.size += 1
+        
 
     def get(self):
         # Note:  This is the only [] allowed
@@ -50,6 +62,7 @@ class ArrayRingBuffer:
 ring = RingBuffer(1)
 
 ring.append('a')
+ring.append('b')
 
 # print(ring.storage.head.value)
 print(ring.get())
