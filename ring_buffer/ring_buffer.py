@@ -15,6 +15,7 @@ class RingBuffer:
         list_buffer_contents = []
 
         # TODO: Your code here
+        # initial impression: iterate through dll and append to array?
 
         return list_buffer_contents
 
