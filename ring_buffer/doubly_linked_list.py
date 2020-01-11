@@ -136,3 +136,17 @@ class DoublyLinkedList:
             current = current.next
 
         return max_value
+
+
+lst = DoublyLinkedList()
+
+lst.add_to_head(3)
+
+# lst.head.insert_after(4)
+
+lst.head.value = 5
+# print(lst.head.value)
+# node = ListNode(3)
+# # node1 = ListNode(4)
+# node.insert_after(4)
+# print(node.next.value)
