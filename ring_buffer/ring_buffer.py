@@ -15,16 +15,34 @@ class RingBuffer:
         # this needs more work
         # need some .next stuff.
 
-
         if self.size == self.capacity:
             # first time around, head is oldest.
             # next time around it'll be dll.head.next
-            self.storage.remove_from_head()
-            self.storage.add_to_head(item)
+            # first attempt
+            # self.storage.remove_from_head()
+            # self.storage.add_to_head(item)
+
+            # second attempts
+            # toRemove = self.current
+            # self.current = self.current.next
+            # toRemove.insert_after(item)
+            # print(item, toRemove.next.value)
+            # self.storage.delete(toRemove)
+
+            # maybe can just change values of nodes.
+            # 3rd attempt
+            self.current.value = item
+
+            if self.current == self.storage.tail:
+                self.current = self.storage.head
+            else:
+                self.current = self.current.next        
+
 
         else:
         # adding when under limit
             self.storage.add_to_tail(item)
+            self.current = self.storage.head
             self.size += 1
         
 
@@ -59,10 +77,13 @@ class ArrayRingBuffer:
     def get(self):
         pass
 
-ring = RingBuffer(1)
+ring = RingBuffer(2)
 
 ring.append('a')
 ring.append('b')
+ring.append('c')
+ring.append('d')
+ring.append('e')
 
-# print(ring.storage.head.value)
 print(ring.get())
+# print(ring.storage.length)
