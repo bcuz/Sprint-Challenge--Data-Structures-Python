@@ -6,9 +6,15 @@ class RingBuffer:
         self.capacity = capacity
         self.current = None
         self.storage = DoublyLinkedList()
+        self.size = 0
 
     def append(self, item):
-        pass
+        # adding when under limit
+        self.storage.add_to_tail(item)
+        self.size += 1
+
+
+        # if full, head becomes the newest item.
 
     def get(self):
         # Note:  This is the only [] allowed
@@ -16,6 +22,15 @@ class RingBuffer:
 
         # TODO: Your code here
         # initial impression: iterate through dll and append to array?
+
+        current = self.storage.head
+        
+        if not current:
+            return None
+
+        while current:
+            list_buffer_contents.append(current.value)
+            current = current.next
 
         return list_buffer_contents
 
@@ -31,3 +46,10 @@ class ArrayRingBuffer:
 
     def get(self):
         pass
+
+ring = RingBuffer(1)
+
+ring.append('a')
+
+# print(ring.storage.head.value)
+print(ring.get())
