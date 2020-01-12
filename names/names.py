@@ -15,9 +15,9 @@ duplicates = DoublyLinkedList()
 # starting complexity of n^2.
 
 for name_1 in names_1:
-    # for name_2 in names_2:
-    if name_1 in names_2:
-        duplicates.add_to_head(name_1)
+  # for name_2 in names_2:
+  if name_1 in names_2:
+    duplicates.add_to_head(name_1)
 
 end_time = time.time()
 # print (f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
