@@ -137,6 +137,20 @@ class DoublyLinkedList:
 
         return max_value
 
+    def get(self, val):
+      current = self.head
+      # print(current.value)
+      if not current:
+        return None
+
+      while current:
+        if current.value == val:
+          break
+
+        current = current.next
+
+      return current
+
 
 lst = DoublyLinkedList()
 
