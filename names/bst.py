@@ -1,3 +1,5 @@
+from dll_queue import Queue
+
 class Node:
   def __init__(self, value):
     self.value = value
@@ -23,9 +25,11 @@ class BinarySearchTree:
 
     current = self.root
 
-    # iterative is better
     while True:
-      if newNode.value > current.value:
+      # accounting for duplicate values made it work
+      if value == current.value:
+        break
+      elif newNode.value > current.value:
         if current.right:
           current = current.right
         else:
@@ -71,3 +75,30 @@ class BinarySearchTree:
           current = current.left
         else:
           return False                  
+  
+  def bft_print(self):
+    queue = Queue()
+
+    queue.enqueue(self.root)
+
+    while queue.len() > 0:
+      current = queue.dequeue()
+      # need to call func on the value of the node
+      print(current.value)
+
+      if current.left:
+        queue.enqueue(current.left)
+      if current.right:
+        queue.enqueue(current.right)          
+
+bst = BinarySearchTree()
+bst.insert('adam')
+bst.insert('adam')
+# bst.insert(3)
+# bst.insert(7)
+
+#    5
+# 2    7
+#  3
+
+# bst.bft_print()        

@@ -12,23 +12,21 @@ f = open('names_2.txt', 'r')
 names_2 = f.read().split("\n")  # List containing 10000 names
 f.close()
 
-dll = DoublyLinkedList()
+bst = BinarySearchTree()
 # starting complexity of n^2.
-length = 0
+# ending complexity of n log(n)
+duplicates = 0
 
 for name in names_1:
-  dll.add_to_head(name)
+  bst.insert(name)
 
 for name in names_2:
-  if dll.get(name) != None:
-    length += 1
-
-  # if name_1 in names_2:
-  #   duplicates.add_to_head(name_1)
+  if bst.contains(name) == True:
+    duplicates += 1
 
 end_time = time.time()
 # print (f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
-print (f"{length}")
+print (f"{duplicates}")
 print (f"runtime: {end_time - start_time} seconds")
 
 # ---------- Stretch Goal -----------
