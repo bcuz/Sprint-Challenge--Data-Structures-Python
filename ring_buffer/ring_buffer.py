@@ -4,26 +4,27 @@ from doubly_linked_list import DoublyLinkedList
 class RingBuffer:
   def __init__(self, capacity):
     self.capacity = capacity
+    # current is oldest item.
     self.current = None
     self.storage = DoublyLinkedList()
     self.size = 0
 
   def append(self, item):
 
-    if self.size == self.capacity:
-      self.current.value = item
-
-      if self.current == self.storage.tail:
-        self.current = self.storage.head
-      else:
-        self.current = self.current.next        
-
-
-    else:
-    # adding when under limit
+    if self.size < self.capacity:
       self.storage.add_to_tail(item)
       self.current = self.storage.head
       self.size += 1
+    else:
+      # change the value of the oldest element to the new value coming in
+      self.current.value = item
+
+      # if the current oldest item is the tail, change it to the head
+      if self.current == self.storage.tail:
+        self.current = self.storage.head
+        # otherwise make it the next node in the dll.
+      else:
+        self.current = self.current.next        
     
 
   def get(self):
