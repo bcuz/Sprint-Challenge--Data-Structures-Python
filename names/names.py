@@ -4,11 +4,11 @@ from bst import BinarySearchTree
 
 start_time = time.time()
 
-f = open('names_1.txt', 'r')
+f = open('1.txt', 'r')
 names_1 = f.read().split("\n")  # List containing 10000 names
 f.close()
 
-f = open('names_2.txt', 'r')
+f = open('2.txt', 'r')
 names_2 = f.read().split("\n")  # List containing 10000 names
 f.close()
 
@@ -21,6 +21,7 @@ for name in names_1:
   bst.insert(name)
 
 for name in names_2:
+# if name is found in the bst, it's a duplicate
   if bst.contains(name) == True:
     duplicates += 1
 
