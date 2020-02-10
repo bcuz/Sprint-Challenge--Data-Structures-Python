@@ -64,7 +64,7 @@ class BinarySearchTree:
 
     while True:
       if target == current.value:
-        return True
+        return target
       elif target > current.value:
         if current.right:
           current = current.right

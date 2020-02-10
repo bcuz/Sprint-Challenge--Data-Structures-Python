@@ -15,19 +15,21 @@ f.close()
 bst = BinarySearchTree()
 # starting complexity of n^2.
 # ending complexity of n log(n)
-duplicates = 0
+duplicates = []
 
 for name in names_1:
   bst.insert(name)
 
 for name in names_2:
 # if name is found in the bst, it's a duplicate
-  if bst.contains(name) == True:
-    duplicates += 1
+  search = bst.contains(name) 
+
+  if search == name:
+    duplicates.append(search)
 
 end_time = time.time()
-# print (f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
-print (f"{duplicates}")
+print (f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
+# print (f"{duplicates}")
 print (f"runtime: {end_time - start_time} seconds")
 
 # ---------- Stretch Goal -----------
