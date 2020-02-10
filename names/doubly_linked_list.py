@@ -137,7 +137,6 @@ class DoublyLinkedList:
 
         return max_value
 
-
 lst = DoublyLinkedList()
 
 lst.add_to_head(3)
